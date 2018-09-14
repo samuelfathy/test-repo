@@ -1,0 +1,10 @@
+<li style="margin-left:20px;" class="nav">
+    <a *ngIf="directory.hasChildFolders" (click)="onExpand()" style="cursor: pointer">[+]</a>
+    <a (click)="onSelectFolder()" style="cursor: pointer">
+        <span *ngIf="directory.label; else elseBlock">{{ directory.label }} ({{ directory.name }})</span>
+        <ng-template #elseBlock>{{ directory.name }}</ng-template>
+    </a>
+    <ul style="margin-left: -40px">
+        <fs-tree-node *ngFor="let folder of childFolders" [directory]="folder"></fs-tree-node>
+    </ul>
+</li>

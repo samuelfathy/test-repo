@@ -9,6 +9,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { FSTreeNodeComponent } from './components/fstreenode/fstreenode.component';
+import { DataService } from './data.service';
 
 @NgModule({
     declarations: [
@@ -16,7 +18,8 @@ import { CounterComponent } from './components/counter/counter.component';
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        FSTreeNodeComponent
     ],
     imports: [
         CommonModule,
@@ -29,7 +32,19 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
+    ],
+    providers: [
+        DataService
     ]
 })
 export class AppModuleShared {
+}
+
+
+export class FileSystemEntry {
+    fullPath: string;
+    name: string;
+    label: string;
+    hasChildFolders: boolean;
+    isDirectory: boolean;
 }

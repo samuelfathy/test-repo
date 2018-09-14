@@ -1,5 +1,15 @@
-<p>Hello</p>
-<p>This is a test application playground for dot Net Core, Angular &amp; Type Script!</p>
+<div>
+    <h1>{{currentFolder.fullPath}}</h1>
+    <ul style="margin-left: -40px">
+        <li *ngFor="let folder of currentFolderContent">
+            <a *ngIf="folder.hasChildFolders" style="cursor: pointer">[+]</a>
+            <a style="cursor: pointer">
+                <span *ngIf="folder.label; else elseBlock">{{ folder.label }} ({{ folder.name }})</span>
+                <ng-template #elseBlock>{{ folder.name }}</ng-template>
+            </a>
+        </li>
+    </ul>
+</div>
 <!--ul>
     <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>
     <li><strong>Server-side prerendering</strong>. For faster initial loading and improved SEO, your Angular app is prerendered on the server. The resulting HTML is then transferred to the browser where a client-side copy of the app takes over.</li>
